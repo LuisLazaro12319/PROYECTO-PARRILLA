@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARRILLA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js');
+  }
+</script>
+</head>
+<body>
+<!---------------------                                            ---------------------------------------------->
+    <h1>Tienda</h1> 
+        <div class="buscador-container">
+           
+           <input type="text" id="buscar" placeholder="Ej: Vacío...">
+           <button id="btn-buscar" class="buscar">Buscar</button>
+           
+    </div>
+    <br>
+<!---------------------                                            ---------------------------------------------->    
+    <div class="contenedor">
+        
+        <div class="producto">
+            <img src="coca-cola.jpg" alt="GASEOSA" class="foto-producto">
+            <h3>Coca cola 2L</h3>
+            <p class="precio">$4.500</p>
+            <br> <button class="agregar">Agregar</button>
+        </div>
+<!---------------------                                            ---------------------------------------------->        
+        <div class="producto">
+            <img src="vacio.jpg" alt="SANDWICH DE VACIO" class="foto-producto">
+            <h3>Sándwich de Vacío</h3>
+            <p class="precio">$4.500</p>
+            <br> <button class="agregar">Agregar</button>
+        </div>
+<!---------------------                                            ---------------------------------------------->
+        <div class="producto">
+            <img src="bondiola.jpg" alt="SANDWICH DE BONDIOLA" class="foto-producto">
+            <h3>Sándwich de Bondiola</h3>
+            <p class="precio">$4.500</p>
+            <br> <button class="agregar">Agregar</button>
+        </div>
+<!---------------------                                            ---------------------------------------------->
+        <div class="producto">
+            <img src="choripan.jpg" alt="SANDWICH DE CHORIPAN" class="foto-producto">
+            <h3>Choripan</h3>
+            <p class="precio">$4.500</p>
+            <br> <button class="agregar">Agregar</button>
+        </div>
+<!---------------------                                            ---------------------------------------------->
+        <div class="producto">
+            <img src="cerveza.webp" alt="CERVEZA" class="foto-producto">
+            <h3>BRHAMA 1L</h3>
+            <p class="precio">$4.500</p>
+            <br> <button class="agregar">Agregar</button>
+        </div>
+<!---------------------                                            ---------------------------------------------->
+        <div class="producto">
+            <img src="fanta.webp" alt="GASEOSA" class="foto-producto">
+            <h3>FANTA 1L</h3>
+            <p class="precio">$4.500</p>
+            <br> <button class="agregar">Agregar</button>
+        </div>
+<!---------------------                                            ---------------------------------------------->            
+</div>
+<!---------------------                                            ---------------------------------------------->
+    <div class="seccion-carrito">
+    <h2>Tu Pedido 🥩</h2>
+    <ul id="lista-carrito">
+        <p id="carrito-vacio">El carrito está vacío</p>
+    </ul>
+    <hr>
+<!---------------------                                            ---------------------------------------------->
+    <div class="total-contenedor">
+        <strong>Total: </strong>
+        <span id="precio-total">$0</span>
+    </div>
+<!---------------------                                            ---------------------------------------------->    
+<div class="botones-ticket">
+    <button id="btn-mesa" class="btn-confirmar-tipo">🏠 Para la Mesa</button>
+    <button id="btn-llevar" class="btn-confirmar-tipo">🥡 Para Llevar</button>
+    <button id="btn-nuevo-pedido" class="btn-reset">Siguiente Ticket</button>
+</div>
+<!---------------------                                            ---------------------------------------------->
+</div>
+<!---------------------                                            ---------------------------------------------->
+<div class="caja-diaria">
+    <h3>📊 Cierre de Caja (Solo Dueño)</h3>
+    <p>Ventas realizadas: <span id="cant-ventas">0</span></p>
+    <p>Total recaudado: <span id="recaudacion-total">$0</span></p>
+    <button id="btn-ver-historial">Ver Historial Detallado</button>
+<!---------------------                                            ---------------------------------------------->    
+    <div id="contenedor-historial-visual" style="display: none; margin-top: 20px;">
+        <hr>
+        <h4>Detalle de Ventas</h4>
+        <div id="lista-ventas-desplegable"></div>
+
+    </div>
+<!---------------------                                            ---------------------------------------------->
+</div>
+    <script src="trabajo_interrno.js"></script>
+<!---------------------                                            ---------------------------------------------->
+    <div id="ticket-impresion" class="solo-impresora">
+<!---------------------                                            ---------------------------------------------->
+        <div class="ticket-header">
+        <h2>🥩 PARRILLA EL DUEÑO 🥩</h2>
+        <p id="ticket-fecha"></p>
+    </div>
+<!---------------------                                            ---------------------------------------------->
+    <hr>
+<!---------------------                                            ---------------------------------------------->
+    <div id="ticket-items">
+<!---------------------                                            ---------------------------------------------->
+    </div>
+    <hr>
+<!---------------------                                            ---------------------------------------------->
+    <div class="ticket-footer">
+        <h3 id="ticket-total-final"></h3>
+        <p>¡Gracias por su compra!</p>
+        <p>*** COPIA CONTROL ***</p>
+
+    </div>
+<!---------------------                                            ---------------------------------------------->
+</div>
+<!---------------------                                            ---------------------------------------------->
+</body>
+</html>

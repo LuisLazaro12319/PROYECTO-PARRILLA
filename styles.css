@@ -1,0 +1,208 @@
+/* --- TUS ESTILOS DE CABECERA Y FONDO (SIN CAMBIOS) --- */
+h1 {
+    text-align: center;
+    color: white;
+    font-size: 70px;
+}
+body {
+    background-image: url("fondoprincipal.jpg");
+    background-repeat: no-repeat; 
+    background-position: center; 
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/* --- TUS PRODUCTOS (TAL CUAL LOS TENÍAS) --- */
+.contenedor {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+.producto {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    border-radius: 10px;
+}
+.foto-producto {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+}
+.agregar {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.producto h3 {
+    margin: 10px 0 5px 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+.precio {
+    font-weight: bold;
+    color: #27ae60;
+    margin-bottom: 10px;
+}
+
+/* --- BUSCADOR (SIN CAMBIOS) --- */
+.buscador-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px auto;
+    width: fit-content;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+}
+#buscar { padding: 10px; width: 250px; border-radius: 5px; border: none; }
+.buscar {
+    padding: 10px 20px;
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* --- SECCIÓN CARRITO (MEJORADA) --- */
+.seccion-carrito {
+    background-color: white;
+    color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    width: 320px;
+    margin: 20px auto;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.item-carrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 5px;
+}
+
+/* BOTONES DEL TICKET */
+.botones-ticket {
+    display: flex;
+    flex-direction: column; /* Botones uno arriba del otro */
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-confirmar-tipo {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+}
+
+#btn-mesa { background-color: #2980b9; /* Azul para mesa */ }
+#btn-llevar { background-color: #27ae60; /* Verde para llevar */ }
+
+#btn-mesa:hover { background-color: #2471a3; }
+#btn-llevar:hover { background-color: #219150; }
+
+.btn-reset {
+    background-color: #95a5a6;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* --- CAJA DIARIA E HISTORIAL (MODERNIZADO) --- */
+.caja-diaria {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    margin: 30px auto;
+    width: 380px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.4);
+}
+
+#btn-ver-historial {
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.venta-item {
+    background: #fff;
+    color: #333;
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: left;
+    border-left: 5px solid #f39c12; /* Borde naranja característico */
+    transition: transform 0.2s;
+}
+
+.venta-item:hover { transform: translateX(5px); }
+
+.venta-encabezado {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.venta-detalle {
+    display: none; /* Se activa con la clase .activa desde JS */
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px dashed #ccc;
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+.venta-item.activa .venta-detalle {
+    display: block;
+}
+
+/* --- IMPRESIÓN (SIN CAMBIOS) --- */
+.solo-impresora { display: none; }
+
+@media print {
+    body * { display: none !important; }
+    .solo-impresora, .solo-impresora * {
+        display: block !important;
+        color: black;
+    }
+    #ticket-impresion {
+        width: 100%;
+        max-width: 80mm;
+        margin: 0;
+        padding: 10px;
+        font-family: 'Courier New', Courier, monospace;
+    }
+}
