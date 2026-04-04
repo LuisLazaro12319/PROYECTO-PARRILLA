@@ -114,41 +114,79 @@ function procesarVenta(tipoPedido) {
     let filasTicket = "";
     carrito.forEach(p => {
         const subtotalProducto = p.precio * p.cantidad;
+        // Formato compacto: Cantidad x Nombre en una línea, precio en la misma o debajo sin espacios
         filasTicket += `
-        <div style="display:flex; justify-content:space-between; font-size: 1.1rem;">
-            <span>${p.cantidad}x ${p.nombre}</span>
+        <div style="display:flex; justify-content:space-between; width: 100%;">
+            <span>${p.cantidad} x ${p.nombre}</span>
             <span>$${subtotalProducto.toLocaleString('es-AR')}</span>
         </div>`;
     });
 
     const win = window.open('', '', 'height=700,width=500');
     win.document.write(`
-        <html><head><style>
-            * { color: #000 !important; font-family: Arial, sans-serif; font-weight: 900; }
-            body { padding: 10px; background: white; }
-            .t { border: 2px solid #000; padding: 10px; margin-bottom: 40px; width: 260px; margin: 0 auto; }
-            h2 { text-align: center; margin: 5px 0; text-transform: uppercase; }
-            .cartel-tipo { text-align: center; font-size: 1.5rem; border: 3px solid black; padding: 5px; margin-bottom: 10px; }
-            hr { border: 0; border-top: 2px solid black; margin: 10px 0; }
-        </style></head>
+        <html>
+        <head>
+            <style>
+                @page { size: 58mm auto; margin: 0; }
+                body { 
+                    width: 48mm; /* Un poco menos de 58mm para evitar cortes laterales */
+                    margin: 0; 
+                    padding: 2mm; 
+                    font-family: 'Courier New', Courier, monospace; /* Fuente de ticket clásica */
+                    font-size: 9pt; 
+                    line-height: 1.1; /* Interlineado muy bajo para ahorrar papel */
+                    color: #000;
+                }
+                * { box-sizing: border-box; }
+                .t { width: 100%; border-bottom: 1px dashed #000; padding-bottom: 5px; margin-bottom: 5px; }
+                h2 { text-align: center; font-size: 11pt; margin: 2px 0; text-transform: uppercase; }
+                .cartel-tipo { 
+                    text-align: center; 
+                    font-size: 12pt; 
+                    font-weight: bold; 
+                    border: 1px solid black; 
+                    margin: 2px 0;
+                }
+                .total-line { 
+                    text-align: right; 
+                    font-size: 12pt; 
+                    font-weight: bold; 
+                    margin-top: 5px; 
+                }
+                hr { border: 0; border-top: 1px solid black; margin: 5px 0; }
+                .centrado { text-align: center; font-size: 8pt; }
+            </style>
+        </head>
         <body>
             <div class="t">
-                <p style="text-align:center">*** COPIA CLIENTE ***</p>
+                <p class="centrado">*** COPIA CLIENTE ***</p>
                 <h2>🥩 PARRILLA EL DUEÑO</h2>
-                <hr>${filasTicket}<hr>
-                <p style="text-align:right; font-size:1.3rem;">TOTAL: $${total.toLocaleString('es-AR')}</p>
+                <hr>
+                ${filasTicket}
+                <hr>
+                <p class="total-line">TOTAL: $${total.toLocaleString('es-AR')}</p>
             </div>
+
             <div class="t">
-                <p style="text-align:center">*** COPIA COCINA ***</p>
+                <p class="centrado">*** COPIA COCINA ***</p>
                 <div class="cartel-tipo">${tipoPedido}</div>
                 <h2>🔥 PEDIDO NUEVO</h2>
-                <hr>${filasTicket}<hr>
-                <p style="text-align:center">Hora: ${ventaActual.hora}</p>
+                <hr>
+                ${filasTicket}
+                <hr>
+                <p class="centrado">Hora: ${ventaActual.hora}</p>
             </div>
-        </body></html>
+            
+            <div style="height: 5mm;"></div> </body>
+        </html>
     `);
     win.document.close();
-    setTimeout(() => { win.print(); win.close(); }, 500);
+    
+    setTimeout(() => { 
+        win.print(); 
+        win.close(); 
+    }, 500);
+
     limpiarCarrito();
 }
 
