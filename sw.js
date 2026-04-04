@@ -1,4 +1,4 @@
-const CACHE_NAME = 'parrilla-cache-v1';
+const CACHE_NAME = 'parrilla-cache-v2';
 const assets = [
   './',
   './index.html',
