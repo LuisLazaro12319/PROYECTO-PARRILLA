@@ -129,6 +129,24 @@
         </div>
     </div>
 
-    <script src="trabajo_interrno.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+<script>
+  // Tus credenciales reales según tu captura
+  const firebaseConfig = {
+    apiKey: "AIzaSyBaGA2LLuWypx283NuD8xhsOZX iJr8GXUk",
+    authDomain: "proyecto-parrilla.firebaseapp.com",
+    projectId: "proyecto-parrilla",
+    storageBucket: "proyecto-parrilla.firebasestorage.app",
+    messagingSenderId: "435489543192",
+    appId: "1:435489543192:web:8f0d121fc8b3ff79c21f6d",
+    measurementId: "G-PX15XMPV8D"
+  };
+
+  // Inicialización
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
 </body>
 </html>
