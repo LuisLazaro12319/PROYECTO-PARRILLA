@@ -16,10 +16,12 @@
 <body>
 
     <h1>Tienda</h1> 
+    
     <div class="buscador-container">
         <input type="text" id="buscar" placeholder="Ej: Vacío...">
         <button id="btn-buscar" class="buscar">Buscar</button>
     </div>
+    
     <br>
 
     <div class="contenedor">
@@ -39,50 +41,8 @@
         </div>
 
         <div id="contenedor-productos" style="display: flex; flex-wrap: wrap; gap: 20px;">
-            
-            <div class="producto">
-                <img src="coca-cola.jpg" alt="GASEOSA" class="foto-producto">
-                <h3>Coca cola 2L</h3>
-                <p class="precio">$4.500</p>
-                <br> <button class="agregar">Agregar</button>
-            </div>
-
-            <div class="producto">
-                <img src="vacio.jpg" alt="SANDWICH DE VACIO" class="foto-producto">
-                <h3>Sándwich de Vacío</h3>
-                <p class="precio">$4.500</p>
-                <br> <button class="agregar">Agregar</button>
-            </div>
-
-            <div class="producto">
-                <img src="bondiola.jpg" alt="SANDWICH DE BONDIOLA" class="foto-producto">
-                <h3>Sándwich de Bondiola</h3>
-                <p class="precio">$4.500</p>
-                <br> <button class="agregar">Agregar</button>
-            </div>
-
-            <div class="producto">
-                <img src="choripan.jpg" alt="SANDWICH DE CHORIPAN" class="foto-producto">
-                <h3>Choripan</h3>
-                <p class="precio">$4.500</p>
-                <br> <button class="agregar">Agregar</button>
-            </div>
-
-            <div class="producto">
-                <img src="cerveza.webp" alt="CERVEZA" class="foto-producto">
-                <h3>BRHAMA 1L</h3>
-                <p class="precio">$4.500</p>
-                <br> <button class="agregar">Agregar</button>
-            </div>
-
-            <div class="producto">
-                <img src="fanta.webp" alt="GASEOSA" class="foto-producto">
-                <h3>FANTA 1L</h3>
-                <p class="precio">$4.500</p>
-                <br> <button class="agregar">Agregar</button>
-            </div>
-            
-        </div> </div>
+            </div> 
+    </div> ```
 
     <div class="seccion-carrito">
         <h2>Tu Pedido 🥩</h2>
@@ -128,25 +88,26 @@
             <p>*** COPIA CONTROL ***</p>
         </div>
     </div>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script>
+      // Tus credenciales reales
+      const firebaseConfig = {
+        apiKey: "AIzaSyBaGA2LLuWypx283NuD8xhsOZX iJr8GXUk",
+        authDomain: "proyecto-parrilla.firebaseapp.com",
+        projectId: "proyecto-parrilla",
+        storageBucket: "proyecto-parrilla.firebasestorage.app",
+        messagingSenderId: "435489543192",
+        appId: "1:435489543192:web:8f0d121fc8b3ff79c21f6d",
+        measurementId: "G-PX15XMPV8D"
+      };
 
-<script>
-  // Tus credenciales reales según tu captura
-  const firebaseConfig = {
-    apiKey: "AIzaSyBaGA2LLuWypx283NuD8xhsOZX iJr8GXUk",
-    authDomain: "proyecto-parrilla.firebaseapp.com",
-    projectId: "proyecto-parrilla",
-    storageBucket: "proyecto-parrilla.firebasestorage.app",
-    messagingSenderId: "435489543192",
-    appId: "1:435489543192:web:8f0d121fc8b3ff79c21f6d",
-    measurementId: "G-PX15XMPV8D"
-  };
+      // Inicialización
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+    </script>
 
-  // Inicialización
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-</script>
+    <script src="trabajo_interrno.js"></script> 
 </body>
 </html>
