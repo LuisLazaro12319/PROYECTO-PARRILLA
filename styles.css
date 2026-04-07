@@ -1,39 +1,129 @@
-/* --- TUS ESTILOS DE CABECERA Y FONDO (SIN CAMBIOS) --- */
+/* --- 1. BASE Y FONDO --- */
 h1 {
     text-align: center;
     color: white;
     font-size: 70px;
+    margin-bottom: 20px;
 }
+
 body {
     background-image: url("fondoprincipal.jpg");
     background-repeat: no-repeat; 
     background-position: center; 
     background-attachment: fixed;
     background-size: cover;
+    margin: 0;
+    font-family: Arial, sans-serif;
 }
 
-/* --- TUS PRODUCTOS (TAL CUAL LOS TENÍAS) --- */
-.contenedor {
+/* --- 2. CONTENEDOR DE PRODUCTOS (FIREBASE) --- */
+#contenedor-productos {
     display: flex;
     justify-content: center;
     gap: 50px;
     flex-wrap: wrap;
+    width: 100%;
+    padding: 20px;
 }
+
 .producto {
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.8);
+    /* Cambiamos el 0.9 por algo más bajo, como 0.2 o 0.3 */
+    background-color: rgba(255, 255, 255, 0.459); 
+    
+    /* Agregamos esto para que se vea más moderno (efecto vidrio) */
+    backdrop-filter: blur(5px); 
+    -webkit-backdrop-filter: blur(5px); /* Para que funcione en iPhone/Safari */
+
     padding: 15px;
     border-radius: 10px;
+    width: 200px; 
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+    
+    /* Opcional: un borde finito para que no se pierda en el fondo */
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
-.foto-producto {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
+
+/* Estilo unificado para la foto (Contenedor e Imagen) */
+.producto .foto {
+    width: 190px;
+    height: 170px;
+    margin: 0 auto 10px auto;
+    position: relative; /* Para que el tacho de basura se ubique bien */
     border-radius: 8px;
-    margin-bottom: 10px;
     box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    overflow: visible; /* Permitimos que el tacho sobresalga si es necesario */
+    overflow: hidden; /* Esto corta lo que sobre de la imagen */
 }
-.agregar {
+
+.producto .foto img {
+    width: 100%;    /* Ocupa todo el ancho */
+    height: 100%;   /* Ocupa todo el ALTO (esto quita lo blanco) */
+    object-fit: cover; /* Mantiene la proporción sin deformar la foto */
+    display: block;
+}
+
+.producto h3 {
+    font-family: 'Bangers', system-ui;
+    font-size: 1.4rem; /* Como esta fuente es más angosta, podés subirle el tamaño */
+    letter-spacing: 1px; /* Espacio entre letras para que se lea mejor */
+    color: #333;
+    margin: 25px 0;
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.1); /* Una sombra muy sutil */
+}
+
+.precio {
+    font-weight: bold;
+    color: #273bae;
+    margin-bottom: 20px; /* <--- Aumentá esto para que el botón no quede pegado */
+    font-size: 1.1rem;
+}
+/* Estilo para la seccion agregar nuevos productos */
+.admin-box {
+    background: #333;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 20px auto; /* Centrado */
+    color: white;
+    width: 90%;
+    max-width: 500px; /* Tamaño del marco */
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#btn-crear-producto {
+    background: #27ae60;
+    color: white;
+    padding: 12px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+#panel-admin input[type="text"], 
+#panel-admin input[type="number"] {
+    width: 100%;          /* Que ocupen todo el ancho del marco negro */
+    padding: 10px;        /* Los hace más "gorditos" y cómodos para tocar */
+    border-radius: 8px;   /* Bordes redondeados */
+    border: 1px solid #555;
+    background-color: #fff;
+    font-size: 1rem;      /* Tamaño de la letra que escribís */
+    box-sizing: border-box; /* Para que no se salgan del borde */
+    outline: none;        /* Quita el borde azul feo al hacer clic */
+}
+
+/* Efecto cuando hacés clic para escribir */
+#panel-admin input:focus {
+    border: 2px solid #27ae60; /* Se pone verde cuando vas a escribir */
+    background-color: #f9f9f9;
+}
+/* BOTÓN AGREGAR (Unificado con el JS) */
+.btn-agregar {
     background-color: #e74c3c;
     color: white;
     border: none;
@@ -41,19 +131,28 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-}
-.producto h3 {
-    margin: 10px 0 5px 0;
-    font-size: 1.2rem;
-    color: #333;
-}
-.precio {
-    font-weight: bold;
-    color: #27ae60;
-    margin-bottom: 10px;
+    width: 100%;
+    transition: background 0.2s;
 }
 
-/* --- BUSCADOR (SIN CAMBIOS) --- */
+.btn-agregar:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px); /* Sube apenas */
+    
+}
+/* 2. EL TRUCO: Cuando le das CLIC (Active) */
+.btn-agregar:active {
+    transform: translateY(4px); /* Se mueve hacia abajo */
+    
+    top: 2px; /* Efecto de que realmente lo hundiste */
+}
+.precio:hover {
+    color: #e67e22; /* Cambia a naranja al pasar el mouse */
+    transform: scale(1.1); /* Se agranda un poquito */
+    transition: 0.2s;
+}
+
+/* --- 3. BUSCADOR --- */
 .buscador-container {
     display: flex;
     justify-content: center;
@@ -62,10 +161,17 @@ body {
     margin: 20px auto;
     width: fit-content;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
     border-radius: 15px;
 }
-#buscar { padding: 10px; width: 250px; border-radius: 5px; border: none; }
+
+#buscar { 
+    padding: 10px; 
+    width: 250px; 
+    border-radius: 5px; 
+    border: none; 
+}
+
 .buscar {
     padding: 10px 20px;
     background-color: #f39c12;
@@ -73,9 +179,10 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-weight: bold;
 }
 
-/* --- SECCIÓN CARRITO (MEJORADA) --- */
+/* --- 4. SECCIÓN CARRITO (TICKET VISUAL) --- */
 .seccion-carrito {
     background-color: white;
     color: #333;
@@ -87,51 +194,33 @@ body {
     font-family: 'Courier New', Courier, monospace;
 }
 
-.item-carrito {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+#lista-carrito li {
+    margin-bottom: 8px;
     border-bottom: 1px dashed #ccc;
     padding-bottom: 5px;
 }
 
-/* BOTONES DEL TICKET */
 .botones-ticket {
     display: flex;
-    flex-direction: column; /* Botones uno arriba del otro */
+    flex-direction: column;
     gap: 10px;
     margin-top: 15px;
 }
 
 .btn-confirmar-tipo {
-    background-color: #27ae60;
     color: white;
     border: none;
     padding: 12px;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 0.9rem;
-    transition: background 0.3s;
 }
 
-#btn-mesa { background-color: #2980b9; /* Azul para mesa */ }
-#btn-llevar { background-color: #27ae60; /* Verde para llevar */ }
+#btn-mesa { background-color: #2980b9; }
+#btn-llevar { background-color: #27ae60; }
+.btn-reset { background-color: #95a5a6; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; }
 
-#btn-mesa:hover { background-color: #2471a3; }
-#btn-llevar:hover { background-color: #219150; }
-
-.btn-reset {
-    background-color: #95a5a6;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* --- CAJA DIARIA E HISTORIAL (MODERNIZADO) --- */
+/* --- 5. CAJA DIARIA E HISTORIAL --- */
 .caja-diaria {
     background-color: #2c3e50;
     color: white;
@@ -140,7 +229,6 @@ body {
     width: 380px;
     border-radius: 10px;
     text-align: center;
-    box-shadow: 0px 8px 20px rgba(0,0,0,0.4);
 }
 
 #btn-ver-historial {
@@ -151,45 +239,21 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-    margin-top: 10px;
 }
 
-.venta-item {
-    background: #fff;
-    color: #333;
-    margin: 10px 0;
-    padding: 12px;
-    border-radius: 6px;
+/* --- 6. PANEL ADMIN (AÑADIR PRODUCTOS) --- */
+#nuevo-foto {
+    background: #444;
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px dashed #777; /* Borde punteado para que parezca zona de carga */
     cursor: pointer;
-    text-align: left;
-    border-left: 5px solid #f39c12; /* Borde naranja característico */
-    transition: transform 0.2s;
+    font-size: 0.9rem;
+    
 }
 
-.venta-item:hover { transform: translateX(5px); }
-
-.venta-encabezado {
-    display: flex;
-    justify-content: space-between;
-    font-weight: bold;
-    font-size: 0.95rem;
-}
-
-.venta-detalle {
-    display: none; /* Se activa con la clase .activa desde JS */
-    margin-top: 10px;
-    padding-top: 8px;
-    border-top: 1px dashed #ccc;
-    font-size: 0.85rem;
-    color: #555;
-    line-height: 1.5;
-}
-
-.venta-item.activa .venta-detalle {
-    display: block;
-}
-
-/* --- IMPRESIÓN (SIN CAMBIOS) --- */
+/* --- 7. IMPRESIÓN --- */
 .solo-impresora { display: none; }
 
 @media print {
@@ -198,49 +262,4 @@ body {
         display: block !important;
         color: black;
     }
-    #ticket-impresion {
-        width: 100%;
-        max-width: 80mm;
-        margin: 0;
-        padding: 10px;
-        font-family: 'Courier New', Courier, monospace;
-    }
-}
-/* --- ESTILOS PARA PRODUCTOS DINÁMICOS (IGUALAR A LOS ESTÁTICOS) --- */
-
-/* Asegura que el contenedor de la foto tenga el mismo tamaño */
-.producto .foto {
-    width: 200px;
-    height: 200px;
-    margin: 0 auto 10px auto; /* Centra la foto y da espacio abajo */
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
-}
-
-/* Fuerza a que la imagen subida ocupe todo el espacio sin deformarse */
-.producto .foto img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* Alineación del contenedor de productos nuevos */
-#contenedor-productos {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    flex-wrap: wrap;
-    width: 100%;
-}
-
-/* Estilo para el input de archivo en el panel admin */
-#nuevo-foto {
-    background: #444;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #555;
-    cursor: pointer;
-    font-size: 0.8rem;
 }

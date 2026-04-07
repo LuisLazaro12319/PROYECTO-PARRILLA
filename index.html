@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PARRILLA EL DUEÑO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="manifest" href="manifest.json">
 
@@ -15,7 +21,7 @@
 </head>
 <body>
 
-    <h1>Tienda</h1> 
+    <h1>Lista de productos</h1> 
     
     <div class="buscador-container">
         <input type="text" id="buscar" placeholder="Ej: Vacío...">
@@ -25,18 +31,14 @@
     <br>
 
     <div class="contenedor">
-        <div id="panel-admin" style="background: #333; padding: 20px; border-radius: 10px; margin-bottom: 20px; color: white;">
+        <div id="panel-admin" class="admin-box">
             <h3>📦 Agregar Nuevo Producto</h3>
-            <div style="display: flex; flex-direction: column; gap: 10px;">
-                <input type="text" id="nuevo-nombre" placeholder="Nombre (ej: Vacio)">
-                <input type="number" id="nuevo-precio" placeholder="Precio (ej: 8000)">
-                
-                <label>Subir foto del producto:</label>
-                <input type="file" id="nuevo-foto" accept="image/*" style="color: white;"> 
-                
-                <button id="btn-crear-producto" style="background: #27ae60; color: white; padding: 10px; cursor: pointer; border: none; border-radius: 5px;">
-                    Añadir a la Tienda
-                </button>
+            <div class="form-container">
+                <input type="text" id="nuevo-nombre" placeholder="Nombre...">
+        <input type="number" id="nuevo-precio" placeholder="Precio...">
+        <label>Subir foto del producto:</label>
+        <input type="file" id="nuevo-foto" accept="image/*"> 
+        <button id="btn-crear-producto">Añadir a la Tienda</button>
             </div>
         </div>
 
@@ -57,11 +59,19 @@
         <div class="botones-ticket">
             <button id="btn-mesa" class="btn-confirmar-tipo">🏠 Para la Mesa</button>
             <button id="btn-llevar" class="btn-confirmar-tipo">🥡 Para Llevar</button>
-            <button id="btn-nuevo-pedido" class="btn-reset">Siguiente Ticket</button>
+            <button id="btn-nuevo-pedido" class="btn-reset">Limpiar Carrito</button>
         </div>
     </div>
 
     <div class="caja-diaria">
+        <div class="acciones-historial" style="display: flex; gap: 10px; justify-content: center; margin-top: 10px;">
+    <button id="btn-descargar-pdf" style="background: #2980b9; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">
+        📄 Descargar Reporte PDF
+    </button>
+    <button id="btn-borrar-historial" style="background: #c0392b; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">
+        🗑️ Reiniciar Caja (Borrar Todo)
+    </button>
+</div>
         <h3>📊 Cierre de Caja (Solo Dueño)</h3>
         <p>Ventas realizadas: <span id="cant-ventas">0</span></p>
         <p>Total recaudado: <span id="recaudacion-total">$0</span></p>
@@ -74,20 +84,7 @@
         </div>
     </div>
 
-    <div id="ticket-impresion" class="solo-impresora">
-        <div class="ticket-header">
-            <h2>🥩 PARRILLA EL DUEÑO 🥩</h2>
-            <p id="ticket-fecha"></p>
-        </div>
-        <hr>
-        <div id="ticket-items"></div>
-        <hr>
-        <div class="ticket-footer">
-            <h3 id="ticket-total-final"></h3>
-            <p>¡Gracias por su compra!</p>
-            <p>*** COPIA CONTROL ***</p>
-        </div>
-    </div>
+    
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
@@ -107,7 +104,8 @@
       firebase.initializeApp(firebaseConfig);
       const db = firebase.firestore();
     </script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
     <script src="trabajo_interrno.js"></script> 
 </body>
 </html>
