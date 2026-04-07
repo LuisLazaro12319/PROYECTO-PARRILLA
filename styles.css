@@ -1,4 +1,5 @@
 /* --- 1. BASE Y FONDO --- */
+
 h1 {
     text-align: center;
     color: white;
@@ -12,14 +13,30 @@ body {
     background-position: center; 
     background-attachment: fixed;
     background-size: cover;
+    
     margin: 0;
     font-family: Arial, sans-serif;
+}
+html, body {
+    max-width: 100%;
+    overflow-x: hidden; /* Corta cualquier cosa que intente salirse de lado */
+    margin: 0;
+    padding: 0;
+}
+
+.contenedor {
+    width: 100%;
+    max-width: 1200px; /* O el ancho que prefieras */
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box; /* Fundamental para que el padding no sume ancho */
 }
 
 /* --- 2. CONTENEDOR DE PRODUCTOS (FIREBASE) --- */
 #contenedor-productos {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap; 
     gap: 50px;
     flex-wrap: wrap;
     width: 100%;
@@ -122,6 +139,7 @@ body {
     border: 2px solid #27ae60; /* Se pone verde cuando vas a escribir */
     background-color: #f9f9f9;
 }
+
 /* BOTÓN AGREGAR (Unificado con el JS) */
 .btn-agregar {
     background-color: #e74c3c;
@@ -142,8 +160,7 @@ body {
 }
 /* 2. EL TRUCO: Cuando le das CLIC (Active) */
 .btn-agregar:active {
-    transform: translateY(4px); /* Se mueve hacia abajo */
-    
+    transform: translateY(4px); /* Se mueve hacia abajo */    
     top: 2px; /* Efecto de que realmente lo hundiste */
 }
 .precio:hover {
